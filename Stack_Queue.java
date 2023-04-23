@@ -105,12 +105,39 @@ public class Stack_Queue {
 		System.out.println("Inserted " + x + " into Queue");
 		return true;
 	}
+	
+	// Dequeue Operation for Queue
+	boolean dequeue() {
+		if (front == -1) {
+			System.out.println("QUEUE UNDERFLOW");
+			return false;
+		}
+		/*
+		 * if front and rear reach at maxsize 
+		 * then initialize it at -1
+		 */
+		else if (front == rear) {
+			front = rear = -1;
+			return true;
+		}
+		// Incrementing the front
+		else {
+			front = front + 1;
+			return true;
+		}
+	}
 
 	// Displaying the elements of Queue
 	void display_queue() {
 		// TODO Auto-generated method stub
+		if (rear == -1) {
+			System.out.println();
+			System.out.println("Queue is Empty");
+		}
+		else {
 		for (int i = front; i <= rear; i++) {
 			System.out.println(queue[i]);
+		}
 		}
 
 	}
@@ -188,10 +215,10 @@ public class Stack_Queue {
 			System.out.println();
 
 			int ch = 0;
-			while (ch != 3) {
+			while (ch != 4) {
 				System.out.println("MENU FOR OPERATIONS ON STACK");
 				// Menu for Operations on Stack
-				System.out.println("1.Insert an element into Queue \n2.Display the Queue elements \n3.Exit");
+				System.out.println("1.Insert an element into Queue \n2.Delete an element from Queue \n3.Display the Queue elements \n4.Exit");
 				System.out.println("---------------------------------------------------------");
 
 				System.out.println("Enter choice");
@@ -208,12 +235,18 @@ public class Stack_Queue {
 					break;
 
 				case 2:
+					sq.dequeue();
+					System.out.println("Deleted the front element in Queue");
+					System.out.println("---------------------------------------------------------");
+					break;
+
+				case 3:
 					System.out.println("DISPLAYING QUEUE ELEMENTS");
 					sq.display_queue();
 					System.out.println("---------------------------------------------------------");
 					break;
 
-				case 3:
+				case 4:
 					System.out.println("Exit");
 					System.exit(0);
 					break;
